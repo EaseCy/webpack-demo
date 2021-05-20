@@ -1,12 +1,24 @@
-import _ from 'lodash';
-function component() {
-    let element = document.createElement('div');
-  
-    // Lodash, currently included via a script, is required for this line to work
-    element.innerHTML = _.join(['Hello','lalla' ,'webpack'], ' ');
-   let ease = 1;
-   console.log(ease)
-    return element;
-  }
-  
-  document.body.appendChild(component());
+import x from './x.js'
+import png from './assets/1.png'
+console.log(png)
+
+const div = document.getElementById('app')
+console.log('div')
+console.log(div)
+div.innerHTML = `
+  <img src="${png}">
+`
+
+const button = document.createElement('button')
+button.innerText ='懒加载'
+button.onclick = ()=>{
+  const promise = import('./lazy')
+  promise.then((module)=>{
+    const fn = module.default
+    fn()
+  }, ()=>{
+    console.log('模块加载错误')
+  })
+}
+
+div.appendChild(button)

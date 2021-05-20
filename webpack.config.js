@@ -1,30 +1,21 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require("path");
 
+const base = require('./webpack.config.base.js')
+
 module.exports = {
-  entry: "./src/app.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "main.js"
+  ...base,
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: "./dist"
   },
   module: {
     rules: [
+      ...base.module.rules,
       {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"]
-          }
-        }
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          "style-loader", // creates style nodes from JS strings
-          "css-loader", // translates CSS into CommonJS
-          "sass-loader" // compiles Sass to CSS, using Node Sass by default
-        ]
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"]
       }
     ]
   }

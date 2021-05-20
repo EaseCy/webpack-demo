@@ -1,27 +1,30 @@
 {
-  "name": "webpack-demo",
+  "name": "webpack-demo-1",
   "version": "1.0.0",
   "description": "",
-  "private": true,
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
+    "build": "rm -rf dist && webpack --config webpack.config.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "babel-loader": "^8.0.2",
-    "css-loader": "^1.0.0",
-    "node-sass": "^4.9.3",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.0",
-    "webpack": "^4.17.2",
-    "webpack-cli": "^3.1.0"
-  },
-  "dependencies": {
-    "lodash": "^4.17.10"
+    "css-loader": "^3.2.0",
+    "dart-sass": "^1.23.7",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.1",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
